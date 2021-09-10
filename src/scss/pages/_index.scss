@@ -1,33 +1,74 @@
 * {
-  font-family: 'Kaisei HarunoUmi', serif;
+  font-family: 'Glory', sans-serif;
+  background-color: #1c1c1c;
+  color: linen;
+  
 }
 
-.search_title {
-  font-size: 25px;
-}
-.button {
-  height: 25px;
-  width: 85px;
-  border-radius: 15px;
-  font-family: 'Kaisei HarunoUmi', serif;
-  font-weight: bold;
-  background-color: $blue;
-  color: whitesmoke;
-}
-.main {
-  display: flex;
-  flex-direction: row;
+.header__title {
+  text-align: center;
 }
 
+.main__search{
+  text-align: center;
+  margin-bottom: 50px;
+  .main__search--input {
+    width: 313px;
+    height: 30px;
+    background-color: linen;
+    color: #1c1c1c;
+    font-size: 16px;
+  }
+  .main__search--button {
+    height: 34px;
+    width: 125px;
+    font-family: 'Glory', sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+    background-color: mediumturquoise;
+    color: #1c1c1c;
+  }
+}
+.main__format{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  .main__format--section{
+    margin-right: 40px;
+  }
+  .main__format--title{
+    text-align: end;
+
+  }
+}
+.main__showlist{
+  border-left: 2px solid mediumturquoise;
+  .main__showlist--title{
+    font-size: 1.5em;
+    margin-left: 45px;
+    margin-bottom: 17px;
+  }
+  .main__showlist--text{
+    font-size: 18px;
+  }
+}
 .show_container {
-  background-color: lightcoral;
-  width: 60rem;
+  background-color:rgb(66, 67, 68);
   list-style-type: none;
+  margin-bottom: 10px;
   .image {
     margin: 20px;
   }
   .showtitle {
-    background-color: lightcoral;
-    font-family: 'Kaisei HarunoUmi', serif;
+    background-color: rgb(66, 67, 68);
+    font-family: 'Glory', sans-serif;
+    margin: 0px 20px;
+    padding-bottom: 10px;
+    color: linen;
   }
+}
+.selected{
+  background-color: mediumturquoise;
+}
+.black_font{
+  color: #1c1c1c;
 }

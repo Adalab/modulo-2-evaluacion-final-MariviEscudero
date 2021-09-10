@@ -19,7 +19,6 @@ function handleSearchShow(event){
       showsList = data;
       paintShows();
     });
-  
 }
 searchBtn.addEventListener('click', handleSearchShow);
 
@@ -27,19 +26,21 @@ searchBtn.addEventListener('click', handleSearchShow);
 
 function paintShows(){
   let html = '';
-  for(const showItem of showsList){  
+  for(const showItem of showsList){
     showsImages = showItem.show.image;
     if(showsImages === null){
       showsImages = 'https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
     }else{
-      showsImages = showItem.show.image.medium; 
+      showsImages = showItem.show.image.medium;
     }
-    console.log(showsImages);
     showsTitles = showItem.show.name;
     html += '<li class="show_container">';
     html += `<img class="image" src="${showsImages}" alt="${showsTitles}"/>`;
     html += `<h2 class="showtitle">${showsTitles}</h2>`;
     html += '</li>';
   }
- showsPainted.innerHTML = html;
+  showsPainted.innerHTML = html;
 }
+
+//funcion para seleccionar favoritos
+

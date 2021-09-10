@@ -5,39 +5,39 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Modulo2-Evaluacion-Final-MariviEscudero</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Kaisei+HarunoUmi:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Glory:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/main.css" />
   </head>
   <body>
     <header class="header">
-      <p class="search_title">Buscador de series de TV</p>
+      <h1 class="header__title">Buscador de series de TV</h1>
     </header>
     <main class="main">
-      <article class="favorites">
-        <form class="favorites" action="">
-          <input class="js_searchtext"type="text" />
-          <button class="button js_searchbtn">Buscar</button>
-        </form>
-      </article>
-      <section class="show_list">
-        <ul class="js_showcontainer" >
-          <li class="show_container ">
-            <img
-              class="image"
-              src="https://via.placeholder.com/210x295/ffffff/666666/?text=TV"
-              alt=""
-            />
-            <h2 class="showtitle">Título de la serie</h2>
-         
+      <form class="main__search" action="">
+        <input type="text" class="main__search--input js_searchtext"type="text" autofocus/>
+        <button class="main__search--button js_searchbtn">Buscar</button>
+      </form>
+      <div class="main__format">
+      <section class="main__format--section">
+        <h2 class="main__format--title">Favoritos</h2>
+        <ul class="showlist_container">
+          <li class="show_container"> 
+            <img class="image" src="https://via.placeholder.com/210x295/ffffff/666666/?text=TV" alt= "title"/>
+            <h2 class="showtitle">titulo</h2>
+          </li>
+        </ul>
+      </section>
+      <section class="main__showlist">
+        <h3 class="main__showlist--title">Series</h3>
+        <ul class="showlist_container js_showcontainer" >
+            <p class="main__showlist--text">Busca tus series favoritas y selecciónalas con un click!</p>
+            
         </ul>
       </section>
     </main>
-
-    <script src="./assets/js/main.js"></script>
+  </div>
+    <script type="text/javascript" src="./assets/js/main.js"></script>
   </body>
 </html>
