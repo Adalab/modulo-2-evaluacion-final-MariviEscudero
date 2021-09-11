@@ -13,6 +13,7 @@ let favoriteShows = [];
 let favoriteShowsImages = [];
 let favoriteShowsTitles = [];
 let favoritesShowsId = [];
+
 //funcion para pintar favoritos
 
 function paintFavorites(){
@@ -32,7 +33,6 @@ function paintFavorites(){
     html += '</li>';
   }
   favoriteShowsPainted.innerHTML = html;
-
 }
 
 //funcion para seleccionar favoritos
@@ -56,7 +56,17 @@ function handleListenedContainers(ev){
     selectedShowTitle.classList.remove('text_color');
   }
   paintFavorites();
+  saveFavoritesInLocalStorage();
 }
+
+//funcion localstorage
+
+function saveFavoritesInLocalStorage() {
+  const transformFavoritesArray = JSON.stringify(favoriteShows);
+  localStorage.setItem('favoriteShows', transformFavoritesArray);
+}
+
+
 //funcion para escuchar favoritos de series
 
 function listenShows(){
@@ -102,3 +112,15 @@ function handleSearchShow(event){
     });
 }
 searchBtn.addEventListener('click', handleSearchShow);
+
+//sacar datos de localStorage
+
+function getFavoritesFromLocalStorage(){
+  const localStorageFavorites = localStorage.getItem('favoriteShows');
+  if(localStorageFavorites !== null){
+    const favoritesArray = JSON.parse(localStorageFavorites);
+    favoriteShows = favoritesArray;
+    paintFavorites();
+  }
+}
+getFavoritesFromLocalStorage();
