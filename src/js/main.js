@@ -60,7 +60,7 @@ function handleListenedContainers(ev){
   saveFavoritesInLocalStorage();
 }
 
-//funcion localstorage
+//funcion para almacenar favoritos en localstorage
 
 function saveFavoritesInLocalStorage() {
   const transformFavoritesArray = JSON.stringify(favoriteShows);
@@ -114,7 +114,7 @@ function handleSearchShow(event){
 }
 searchBtn.addEventListener('click', handleSearchShow);
 
-//sacar datos de localStorage
+//sacar datos de favoritos de localStorage
 
 function getFavoritesFromLocalStorage(){
   const localStorageFavorites = localStorage.getItem('favoriteShows');
