@@ -30,6 +30,7 @@ function paintFavorites(){
     html += `<li class="favorite_container"   id="${favoritesShowsId}">`;
     html += `<img class="favorite_image" src="${favoriteShowsImages}" alt="${favoriteShowsTitles}"/>`;
     html += `<h2 class="favorite_title">${favoriteShowsTitles}</h2>`;
+    html += '<button class="favorite__delbtn js_favoritedelbtn"><i class="fas fa-times favorite__delbtn--icon"></i></button>';
     html += '</li>';
   }
   favoriteShowsPainted.innerHTML = html;
@@ -91,7 +92,7 @@ function paintShows(){
     showsId = showItem.show.id;
     html += `<li class="show_container js_showcontainer"  id="${showsId}">`;
     html += `<img class="image js_showimage" src="${showsImages}" alt="${showsTitles}"/>`;
-    html += `<h2 class="showtitle js_showtitle">${showsTitles}</h2>`;
+    html += `<h4 class="showtitle js_showtitle">${showsTitles}</h4>`;
     html += '</li>';
   }
   showsPainted.innerHTML = html;

@@ -1,7 +1,7 @@
 * {
   font-family: 'Glory', sans-serif;
-  background-color: #1c1c1c;
-  color: linen;
+  background-color: $graphiteblack;
+  color: $linen;
   
 }
 
@@ -15,7 +15,7 @@
   .main__search--input {
     width: 313px;
     height: 30px;
-    background-color: linen;
+    background-color: $linen;
     color: #1c1c1c;
     font-size: 16px;
   }
@@ -25,24 +25,22 @@
     font-family: 'Glory', sans-serif;
     font-weight: bold;
     font-size: 16px;
-    background-color: mediumturquoise;
+    background-color: $medturquoise;
     color: #1c1c1c;
   }
 }
 .main__format{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  
   .main__format--section{
     margin-right: 40px;
   }
   .main__format--title{
     text-align: end;
-
   }
 }
 .main__showlist{
-  border-left: 2px solid mediumturquoise;
+  border-left: 2px solid $medturquoise;
   .main__showlist--title{
     font-size: 1.5em;
     margin-left: 45px;
@@ -53,27 +51,27 @@
   }
 }
 .show_container {
-  background-color:rgb(66, 67, 68);
+  background-color: $mediumgrey;
   list-style-type: none;
   margin-bottom: 10px;
   .image {
     margin: 20px;
-    background-color: linen;
+    background-color: $linen;
   }
   .showtitle {
     background-color: transparent;
     font-family: 'Glory', sans-serif;
     margin: 0px 20px;
     padding-bottom: 10px;
-    color: linen;
+    color: $linen;
   }
   .text_color{
-    color: #1c1c1c;
+    color: $graphiteblack;
   }
 }
 .selected{
-  background-color: mediumturquoise;
+  background-color: $medturquoise;
 }
 .text_color{
-  color: #1c1c1c;
+  color: $graphiteblack;
 }

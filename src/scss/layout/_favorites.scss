@@ -6,13 +6,26 @@
 
     }
     .favorite_image{
-      background-color: linen;
+      background-color: $linen;
     }
     .favorite_title {
       background-color: transparent;
       font-family: 'Glory', sans-serif;
       margin: 0px 20px;
       padding-bottom: 10px;
-      color: linen;
+      color: $linen;
+    }
+    .favorite__delbtn{
+      background-color: $medturquoise;
+      height: 30px;
+      width: 30px;
+      border-radius: 15px;
+      border: solid  2px $graphiteblack ;
+      font-size: 23px;
+      text-align: center;
+      .favorite__delbtn--icon{
+        background-color: transparent;
+        color: $graphiteblack;
+      }
     }
     
