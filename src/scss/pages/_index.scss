@@ -32,6 +32,7 @@
 .main__format{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  
   .main__format--section{
     margin-right: 40px;
   }
@@ -57,18 +58,22 @@
   margin-bottom: 10px;
   .image {
     margin: 20px;
+    background-color: linen;
   }
   .showtitle {
-    background-color: rgb(66, 67, 68);
+    background-color: transparent;
     font-family: 'Glory', sans-serif;
     margin: 0px 20px;
     padding-bottom: 10px;
     color: linen;
   }
+  .text_color{
+    color: #1c1c1c;
+  }
 }
 .selected{
   background-color: mediumturquoise;
 }
-.black_font{
+.text_color{
   color: #1c1c1c;
 }
