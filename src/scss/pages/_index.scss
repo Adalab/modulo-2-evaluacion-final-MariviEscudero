@@ -16,7 +16,7 @@
     width: 313px;
     height: 30px;
     background-color: $linen;
-    color: #1c1c1c;
+    color: $graphiteblack;
     font-size: 16px;
   }
   .main__search--button {
@@ -26,7 +26,7 @@
     font-weight: bold;
     font-size: 16px;
     background-color: $medturquoise;
-    color: #1c1c1c;
+    color: $graphiteblack;
   }
 }
 .main__format{
@@ -36,7 +36,8 @@
     margin-right: 40px;
   }
   .main__format--title{
-    text-align: end;
+    text-align: start;
+    margin-left: 40px;
   }
 }
 .main__showlist{
