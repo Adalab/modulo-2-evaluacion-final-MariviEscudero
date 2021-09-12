@@ -2,14 +2,13 @@
   font-family: 'Glory', sans-serif;
   background-color: $graphiteblack;
   color: $linen;
-  
 }
 
 .header__title {
   text-align: center;
 }
 
-.main__search{
+.main__search {
   text-align: center;
   margin-bottom: 50px;
   .main__search--input {
@@ -29,13 +28,13 @@
     color: $graphiteblack;
   }
 }
-.main__format{
+.main__format {
   display: grid;
   grid-template-columns: 360px 1fr;
-  .main__format--section{
+  .main__format--section {
     margin-right: 40px;
   }
-  .main__format--title{
+  .main__format--title {
     text-align: start;
     margin-left: 10px;
   }

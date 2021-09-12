@@ -2,7 +2,9 @@
 const showsPainted = document.querySelector('.js_showlistcontainer');
 const searchBtn = document.querySelector('.js_searchbtn');
 const searchText = document.querySelector('.js_searchtext');
-const favoriteShowsPainted = document.querySelector('.js_favoriteshowscontainer');
+const favoriteShowsPainted = document.querySelector(
+  '.js_favoriteshowscontainer'
+);
 
 let showsList = [];
 let showsImages = [];
@@ -16,13 +18,14 @@ let favoritesShowsId = [];
 
 //funcion para pintar favoritos
 
-function paintFavorites(){
+function paintFavorites() {
   let html = '';
-  for(const favShow of favoriteShows){
+  for (const favShow of favoriteShows) {
     favoriteShowsImages = favShow.show.image;
-    if(favoriteShowsImages === null){
-      favoriteShowsImages = 'https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
-    }else{
+    if (favoriteShowsImages === null) {
+      favoriteShowsImages =
+        'https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
+    } else {
       favoriteShowsImages = favShow.show.image.medium;
     }
     favoriteShowsTitles = favShow.show.name;
@@ -30,7 +33,8 @@ function paintFavorites(){
     html += `<li class="favorite_container"   id="${favoritesShowsId}">`;
     html += `<img class="favorite_image" src="${favoriteShowsImages}" alt="${favoriteShowsTitles}"/>`;
     html += `<h2 class="favorite_title">${favoriteShowsTitles}</h2>`;
-    html += '<button class="favorite__delbtn js_favoritedelbtn"><i class="fas fa-times favorite__delbtn--icon"></i></button>';
+    html +=
+      '<button class="favorite__delbtn js_favoritedelbtn"><i class="fas fa-times favorite__delbtn--icon"></i></button>';
     html += '</li>';
   }
   favoriteShowsPainted.innerHTML = html;
@@ -38,21 +42,22 @@ function paintFavorites(){
 
 //funcion para seleccionar favoritos
 
-function handleListenedContainers(ev){
+function handleListenedContainers(ev) {
   const selectedShowContent = ev.currentTarget;
   const selectedShowTitle = selectedShowContent.querySelector('.js_showtitle');
-  const selectedShow = parseInt(ev.currentTarget.id) ;
-  const contentClicked = showsList.find((showItem) =>{
+  const selectedShow = parseInt(ev.currentTarget.id);
+  const contentClicked = showsList.find((showItem) => {
     return showItem.show.id === selectedShow;
   });
   const indexOfContentClicked = favoriteShows.findIndex((showItem) => {
     return showItem.show.id === selectedShow;
   });
-  if(indexOfContentClicked === -1){
+  if (indexOfContentClicked === -1) {
     favoriteShows.push(contentClicked);
     selectedShowContent.classList.add('selected');
     selectedShowTitle.classList.add('text_color');
-  }else{favoriteShows.splice(indexOfContentClicked,1);
+  } else {
+    favoriteShows.splice(indexOfContentClicked, 1);
     selectedShowContent.classList.remove('selected');
     selectedShowTitle.classList.remove('text_color');
   }
@@ -67,25 +72,25 @@ function saveFavoritesInLocalStorage() {
   localStorage.setItem('favoriteShows', transformFavoritesArray);
 }
 
-
 //funcion para escuchar favoritos de series
 
-function listenShows(){
+function listenShows() {
   const listenedContainers = document.querySelectorAll('.js_showcontainer');
-  for (listenedItem of listenedContainers){
+  for (listenedItem of listenedContainers) {
     listenedItem.addEventListener('click', handleListenedContainers);
   }
 }
 
 //funcion para pintar imagenes y titulos
 
-function paintShows(){
+function paintShows() {
   let html = '';
-  for(const showItem of showsList){
+  for (const showItem of showsList) {
     showsImages = showItem.show.image;
-    if(showsImages === null){
-      showsImages = 'https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
-    }else{
+    if (showsImages === null) {
+      showsImages =
+        'https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
+    } else {
       showsImages = showItem.show.image.medium;
     }
     showsTitles = showItem.show.name;
@@ -101,7 +106,7 @@ function paintShows(){
 
 //funcion buscar series
 
-function handleSearchShow(event){
+function handleSearchShow(event) {
   event.preventDefault();
   const searchTextValue = searchText.value;
   const fetchUrl = `//api.tvmaze.com/search/shows?q=${searchTextValue}`;
@@ -116,9 +121,9 @@ searchBtn.addEventListener('click', handleSearchShow);
 
 //sacar datos de favoritos de localStorage
 
-function getFavoritesFromLocalStorage(){
+function getFavoritesFromLocalStorage() {
   const localStorageFavorites = localStorage.getItem('favoriteShows');
-  if(localStorageFavorites !== null){
+  if (localStorageFavorites !== null) {
     const favoritesArray = JSON.parse(localStorageFavorites);
     favoriteShows = favoritesArray;
     paintFavorites();
