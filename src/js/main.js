@@ -3,6 +3,7 @@ const showsPainted = document.querySelector('.js_showlistcontainer');
 const searchBtn = document.querySelector('.js_searchbtn');
 const searchText = document.querySelector('.js_searchtext');
 const favoriteShowsPainted = document.querySelector('.js_favoriteshowscontainer');
+const favoritesResetBtn = document.querySelector('.js_resetfavsbtn');
 
 
 let showsList = [];
@@ -14,6 +15,8 @@ let favoriteShows = [];
 let favoriteShowsImages = [];
 let favoriteShowsTitles = [];
 let favoritesShowsId = [];
+
+
 
 //funcion para pintar favoritos
 
@@ -63,6 +66,7 @@ function handleListenedContainers(ev) {
   }
   paintFavorites();
   saveFavoritesInLocalStorage();
+ 
 }
 
 
@@ -132,6 +136,8 @@ function getFavoritesFromLocalStorage() {
 }
 getFavoritesFromLocalStorage();
 
+
+
 //borrar favoritos
 
 function handleDelFavBtn(ev){
@@ -144,4 +150,10 @@ function handleDelFavBtn(ev){
   paintFavorites();
 }
 
+//boton de reset de favoritos
 
+function handleFavoritesResetBtn(){
+  favoriteShows.length = 0;
+  localStorage.removeItem('favoriteShows');
+}
+favoritesResetBtn.addEventListener('click', handleFavoritesResetBtn);
