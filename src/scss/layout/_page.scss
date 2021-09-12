@@ -28,14 +28,4 @@
     color: $graphiteblack;
   }
 }
-.main__format {
-  display: grid;
-  grid-template-columns: 360px 1fr;
-  .main__format--section {
-    margin-right: 40px;
-  }
-  .main__format--title {
-    text-align: start;
-    margin-left: 10px;
-  }
-}
+

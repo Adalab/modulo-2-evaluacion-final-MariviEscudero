@@ -1,3 +1,30 @@
+.main__format {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  .main__format--section {
+    margin-right: 20px;
+  }
+  .main__format--flex{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .main__format--title {
+    text-align: start;
+    margin-left: 10px;
+  }
+  .main__format--resetbtn{
+
+    height: 25px;
+    width: 125px;
+    font-family: 'Glory', sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+    background-color: $medturquoise;
+    color: $graphiteblack;
+  }
+}
 .favorite_container {
   list-style-type: none;
   display: flex;
@@ -11,7 +38,7 @@
 .favorite_title {
   background-color: transparent;
   font-family: 'Glory', sans-serif;
-  margin: 0px 20px;
+  margin: 0px 20px 0px;
   padding-bottom: 10px;
   color: $linen;
 }
