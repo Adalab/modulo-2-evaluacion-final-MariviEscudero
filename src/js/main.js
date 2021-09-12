@@ -15,16 +15,6 @@ let favoriteShowsImages = [];
 let favoriteShowsTitles = [];
 let favoritesShowsId = [];
 
-/*//boton que borra favoritos
-function handleDelFavorites(ev){}
-const favToDel = ev.target.parentnode;
-console.log(favToDel);
-
-for(const favoriteShow of favoriteShows){
-  let favDelBtn = favoriteShow.querySelector('.js_favoritedelbtn');
-  favDelBtn.addEventListener('click', handleDelFavorites);
-}*/
-
 //funcion para pintar favoritos
 
 function paintFavorites() {
