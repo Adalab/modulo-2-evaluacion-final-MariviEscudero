@@ -7,6 +7,7 @@
     }
     .favorite_image{
       background-color: $linen;
+      margin-top: 10px;
     }
     .favorite_title {
       background-color: transparent;
@@ -16,16 +17,19 @@
       color: $linen;
     }
     .favorite__delbtn{
-      background-color: $medturquoise;
-      height: 30px;
-      width: 30px;
-      border-radius: 15px;
-      border: solid  2px $graphiteblack ;
-      font-size: 23px;
+      background-color: $graphiteblack;
+      height: 25px;
+      width: 25px;
+      border-radius: 12px;
+      border: solid  2px $linen;
+      font-size: 17px;
+      margin-bottom: 10px;
+      
       text-align: center;
       .favorite__delbtn--icon{
         background-color: transparent;
-        color: $graphiteblack;
+        color: $linen;
+        transform: translate(-1px);
       }
     }
     
