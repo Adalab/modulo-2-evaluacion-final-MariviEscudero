@@ -140,6 +140,7 @@ function handleDelFavBtn(ev){
     return favItem.show.id === parseInt(favoriteClicked);
   });
   favoriteShows.splice(contentClickedIndex, 1);
+  saveFavoritesInLocalStorage();
   paintFavorites();
 }
 
