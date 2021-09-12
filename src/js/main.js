@@ -158,3 +158,5 @@ function handleFavoritesResetBtn(){
   paintFavorites();
 }
 favoritesResetBtn.addEventListener('click', handleFavoritesResetBtn);
+
+
