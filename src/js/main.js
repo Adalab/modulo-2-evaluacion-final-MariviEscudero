@@ -66,7 +66,6 @@ function handleListenedContainers(ev) {
   }
   paintFavorites();
   saveFavoritesInLocalStorage();
- 
 }
 
 
@@ -153,7 +152,9 @@ function handleDelFavBtn(ev){
 //boton de reset de favoritos
 
 function handleFavoritesResetBtn(){
-  favoriteShows.length = 0;
+  const arrayLength = favoriteShows.length;
+  favoriteShows.splice(0,arrayLength);
   localStorage.removeItem('favoriteShows');
+  paintFavorites();
 }
 favoritesResetBtn.addEventListener('click', handleFavoritesResetBtn);
