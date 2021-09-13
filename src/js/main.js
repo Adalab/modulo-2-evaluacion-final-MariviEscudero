@@ -39,8 +39,10 @@ function paintFavorites() {
     html += '</li>';
   }
   favoriteShowsPainted.innerHTML = html;
-  const favoritesDelBtn = document.querySelector('.favorite__delbtn');
-  favoritesDelBtn.addEventListener('click', handleDelFavBtn);
+  const favoritesDelBtns = document.querySelectorAll('.favorite__delbtn');
+  for(const favoritesDelBtn of favoritesDelBtns){
+    favoritesDelBtn.addEventListener('click', handleDelFavBtn);
+  }
 }
 
 //funcion para seleccionar favoritos
