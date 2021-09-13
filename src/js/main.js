@@ -218,7 +218,7 @@ function handleDelFavBtn(ev){
 function handleFavoritesResetBtn(){
   const arrayLength = favoriteShows.length;
   favoriteShows.splice(0,arrayLength);
-  localStorage.removeItem('favoriteShows')ñ
+  localStorage.removeItem('favoriteShows');
   localStorage.removeItem('favoriteSelectedShows');
   removeClassSelected();
   paintFavorites();
