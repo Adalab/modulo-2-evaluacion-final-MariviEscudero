@@ -16,6 +16,7 @@ let favoriteShowsImages = [];
 let favoriteShowsTitles = [];
 let favoritesShowsId = [];
 let favoriteSelectedShows = [];
+let favoriteItem = [];
 
 
 //funcion para pintar favoritos
@@ -97,7 +98,6 @@ function listenShows() {
 //funcion para pintar imagenes y titulos
 
 function paintShows() {
-  //debugger;
   let html = '';
   for (const showItem of showsList) {
     showsImages = showItem.show.image;
@@ -109,7 +109,9 @@ function paintShows() {
     }
     showsTitles = showItem.show.name;
     showsId = showItem.show.id;
-    if(favoriteSelectedShows.includes(showItem)){
+    favoriteItem = favoriteSelectedShows.favoriteSelectedShow.show.id;
+    const includeItem = showsId.includes(favoriteItem);
+    if(includeItem){
       html += `<li class="show_container js_showcontainer selected"  id="${showsId}">`;
     }else{
       html += `<li class="show_container js_showcontainer"  id="${showsId}">`;
@@ -168,10 +170,8 @@ function getFavoritesFromLocalStorage() {
 }
 getFavoritesFromLocalStorage();
 
-
-
-//borrar favoritos
-//se quitan los colores de seleccion de la serie
+//borrar favoritos 1 y 2
+//1 se quitan los colores de seleccion de la serie
 function removeClassSelected(){
   const selectedShows = document.querySelectorAll('.selected');
   for(const selectedShow of selectedShows){
@@ -186,6 +186,9 @@ function removeClassSelected(){
     }
   }
 }
+
+//2 borrar favoritos
+
 function handleDelFavBtn(ev){
   const favoriteClicked = ev.currentTarget.parentElement.id;
   const contentClickedIndex = favoriteShows.findIndex((favItem) => {
@@ -200,6 +203,7 @@ function handleDelFavBtn(ev){
 }
 
 //boton de reset de favoritos
+//añadida funcion para que se borren clases de seleccion en la serie
 
 function handleFavoritesResetBtn(){
   const arrayLength = favoriteShows.length;
