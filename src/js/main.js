@@ -3,6 +3,7 @@ const showsPainted = document.querySelector('.js_showlistcontainer');
 const searchBtn = document.querySelector('.js_searchbtn');
 const searchText = document.querySelector('.js_searchtext');
 const favoriteShowsPainted = document.querySelector('.js_favoriteshowscontainer');
+const favoritesResetBtn = document.querySelector('.js_resetfavsbtn');
 
 
 let showsList = [];
@@ -14,6 +15,8 @@ let favoriteShows = [];
 let favoriteShowsImages = [];
 let favoriteShowsTitles = [];
 let favoritesShowsId = [];
+let favoriteSelectedShows = [];
+
 
 //funcion para pintar favoritos
 
@@ -36,8 +39,10 @@ function paintFavorites() {
     html += '</li>';
   }
   favoriteShowsPainted.innerHTML = html;
-  const favoritesDelBtn = document.querySelector('.favorite__delbtn');
-  favoritesDelBtn.addEventListener('click', handleDelFavBtn);
+  const favoritesDelBtns = document.querySelectorAll('.favorite__delbtn');
+  for(const favoritesDelBtn of favoritesDelBtns){
+    favoritesDelBtn.addEventListener('click', handleDelFavBtn);
+  }
 }
 
 //funcion para seleccionar favoritos
@@ -61,10 +66,17 @@ function handleListenedContainers(ev) {
     selectedShowContent.classList.remove('selected');
     selectedShowTitle.classList.remove('text_color');
   }
+  saveSelectedShowsLocalStorage();
   paintFavorites();
   saveFavoritesInLocalStorage();
 }
 
+//funcion para almacenar series seleccionadas en localstorage
+
+function saveSelectedShowsLocalStorage() {
+  const transformFavoritesArray = JSON.stringify(favoriteShows);
+  localStorage.setItem('favoriteSelectedShows', transformFavoritesArray);
+}
 
 //funcion para almacenar favoritos en localstorage
 
@@ -83,10 +95,23 @@ function listenShows() {
 }
 
 //funcion para pintar imagenes y titulos
+function favoriteShowsPaint(showsId){
+  const favoriteContain = favoriteSelectedShows.find((favoriteSelectedShow) =>{
+    return favoriteSelectedShow.show.id === showsId;
+  });
+  if(favoriteContain === undefined){
+    return false;
+  }else{
+    return true;
+  }
+}
 
 function paintShows() {
+  //debugger;
   let html = '';
   for (const showItem of showsList) {
+    const isFavoriteOfLocSt = favoriteShowsPaint(showsId);
+    console.log(isFavoriteOfLocSt);
     showsImages = showItem.show.image;
     if (showsImages === null) {
       showsImages =
@@ -96,9 +121,19 @@ function paintShows() {
     }
     showsTitles = showItem.show.name;
     showsId = showItem.show.id;
-    html += `<li class="show_container js_showcontainer"  id="${showsId}">`;
+    if(isFavoriteOfLocSt){
+      html += `<li class="show_container js_showcontainer selected"  id="${showsId}">`;
+    }else{
+      html += `<li class="show_container js_showcontainer"  id="${showsId}">`;
+    }
+    // html += `<li class="show_container js_showcontainer"  id="${showsId}">`;
     html += `<img class="image js_showimage" src="${showsImages}" alt="${showsTitles}"/>`;
-    html += `<h4 class="showtitle js_showtitle">${showsTitles}</h4>`;
+    if(isFavoriteOfLocSt){
+      html += `<h4 class="showtitle js_showtitle text_color">${showsTitles}</h4>`;
+    }else{
+      html += `<h4 class="showtitle js_showtitle">${showsTitles}</h4>`;
+    }
+    //html += `<h4 class="showtitle js_showtitle">${showsTitles}</h4>`;
     html += '</li>';
   }
   showsPainted.innerHTML = html;
@@ -120,6 +155,19 @@ function handleSearchShow(event) {
 }
 searchBtn.addEventListener('click', handleSearchShow);
 
+
+//sacar datos de series seleccionadas de localStorage
+
+function getFavoritesSelectedShowsFromLocalSt() {
+  const localStSelectedShows = localStorage.getItem('favoriteSelectedShows');
+  if (localStSelectedShows !== null) {
+    const favoritesArray = JSON.parse(localStSelectedShows);
+    favoriteSelectedShows = favoritesArray;
+    paintFavorites();
+  }
+}
+getFavoritesSelectedShowsFromLocalSt();
+
 //sacar datos de favoritos de localStorage
 
 function getFavoritesFromLocalStorage() {
@@ -132,7 +180,24 @@ function getFavoritesFromLocalStorage() {
 }
 getFavoritesFromLocalStorage();
 
-//borrar favoritos
+//borrar favoritos 1 y 2
+//1 se quitan los colores de seleccion de la serie
+function removeClassSelected(){
+  const selectedShows = document.querySelectorAll('.selected');
+  for(const selectedShow of selectedShows){
+    if(selectedShow){
+      selectedShow.classList.remove('selected');
+    }
+  }
+  const selectedTitles = document.querySelectorAll('.text_color');
+  for(const selectedTitle of selectedTitles){
+    if(selectedTitle){
+      selectedTitle.classList.remove('text_color');
+    }
+  }
+}
+
+//2 borrar favoritos
 
 function handleDelFavBtn(ev){
   const favoriteClicked = ev.currentTarget.parentElement.id;
@@ -140,7 +205,22 @@ function handleDelFavBtn(ev){
     return favItem.show.id === parseInt(favoriteClicked);
   });
   favoriteShows.splice(contentClickedIndex, 1);
+  favoriteSelectedShows.splice(contentClickedIndex, 1);
+  removeClassSelected();
+  saveFavoritesInLocalStorage();
+  saveSelectedShowsLocalStorage();
   paintFavorites();
 }
 
+//boton de reset de favoritos
+//añadida funcion para que se borren clases de seleccion en la serie
 
+function handleFavoritesResetBtn(){
+  const arrayLength = favoriteShows.length;
+  favoriteShows.splice(0,arrayLength);
+  localStorage.removeItem('favoriteShows')ñ
+  localStorage.removeItem('favoriteSelectedShows');
+  removeClassSelected();
+  paintFavorites();
+}
+favoritesResetBtn.addEventListener('click', handleFavoritesResetBtn);
