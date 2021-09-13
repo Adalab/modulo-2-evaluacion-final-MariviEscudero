@@ -179,6 +179,12 @@ function handleDelFavBtn(ev){
   });
   favoriteShows.splice(contentClickedIndex, 1);
   favoriteSelectedShows.splice(contentClickedIndex, 1);
+  const selectedShows = document.querySelectorAll('.selected');
+  for(const selectedShow of selectedShows){
+    if(selectedShow){
+      selectedShow.classList.remove('selected');
+    }
+  }
   saveFavoritesInLocalStorage();
   saveSelectedShowsLocalStorage();
   paintFavorites();
