@@ -1,6 +1,9 @@
 .main__format {
-  display: grid;
-  grid-template-columns: 360px 1fr;
+  @media (min-width: 768px){
+    display: grid;
+    grid-template-columns: 360px 1fr;
+  }
+  
   .main__format--section {
     margin-right: 20px;
   }
@@ -11,18 +14,27 @@
     align-items: center;
   }
   .main__format--title {
+    font-size: 16px;
     text-align: start;
     margin-left: 10px;
+    @media (min-width: 768px){
+      font-size: 1.5em;
+    }
+
   }
   .main__format--resetbtn{
-
-    height: 25px;
-    width: 125px;
+    height: 23px;
+    width: 100px;
     font-family: 'Glory', sans-serif;
     font-weight: bold;
     font-size: 16px;
     background-color: $medturquoise;
     color: $graphiteblack;
+    @media (min-width: 768px){
+      height: 25px;
+      width: 125px;
+      font-size: 16px;
+    }
   }
 }
 .favorite_container {

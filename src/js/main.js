@@ -15,7 +15,7 @@ let favoriteShows = [];
 let favoriteShowsImages = [];
 let favoriteShowsTitles = [];
 let favoritesShowsId = [];
-
+let favoriteSelectedShows = [];
 
 
 //funcion para pintar favoritos
@@ -97,6 +97,7 @@ function listenShows() {
 //funcion para pintar imagenes y titulos
 
 function paintShows() {
+  //debugger;
   let html = '';
   for (const showItem of showsList) {
     showsImages = showItem.show.image;
@@ -108,9 +109,19 @@ function paintShows() {
     }
     showsTitles = showItem.show.name;
     showsId = showItem.show.id;
-    html += `<li class="show_container js_showcontainer"  id="${showsId}">`;
+    if(favoriteSelectedShows.includes(showItem)){
+      html += `<li class="show_container js_showcontainer selected"  id="${showsId}">`;
+    }else{
+      html += `<li class="show_container js_showcontainer"  id="${showsId}">`;
+    }
+    // html += `<li class="show_container js_showcontainer"  id="${showsId}">`;
     html += `<img class="image js_showimage" src="${showsImages}" alt="${showsTitles}"/>`;
-    html += `<h4 class="showtitle js_showtitle">${showsTitles}</h4>`;
+    if(favoriteSelectedShows.includes(showItem)){
+      html += `<h4 class="showtitle js_showtitle text_color">${showsTitles}</h4>`;
+    }else{
+      html += `<h4 class="showtitle js_showtitle">${showsTitles}</h4>`;
+    }
+    //html += `<h4 class="showtitle js_showtitle">${showsTitles}</h4>`;
     html += '</li>';
   }
   showsPainted.innerHTML = html;
@@ -132,8 +143,6 @@ function handleSearchShow(event) {
 }
 searchBtn.addEventListener('click', handleSearchShow);
 
-//pintar seleccion de series favoritas
-
 
 //sacar datos de series seleccionadas de localStorage
 
@@ -141,7 +150,7 @@ function getFavoritesSelectedShowsFromLocalSt() {
   const localStSelectedShows = localStorage.getItem('favoriteSelectedShows');
   if (localStSelectedShows !== null) {
     const favoritesArray = JSON.parse(localStSelectedShows);
-    favoriteShows = favoritesArray;
+    favoriteSelectedShows = favoritesArray;
     paintFavorites();
   }
 }
@@ -169,7 +178,9 @@ function handleDelFavBtn(ev){
     return favItem.show.id === parseInt(favoriteClicked);
   });
   favoriteShows.splice(contentClickedIndex, 1);
+  favoriteSelectedShows.splice(contentClickedIndex, 1);
   saveFavoritesInLocalStorage();
+  saveSelectedShowsLocalStorage();
   paintFavorites();
 }
 
@@ -179,6 +190,7 @@ function handleFavoritesResetBtn(){
   const arrayLength = favoriteShows.length;
   favoriteShows.splice(0,arrayLength);
   localStorage.removeItem('favoriteShows');
+  localStorage.removeItem('favoriteSelectedShows');
   paintFavorites();
 }
 favoritesResetBtn.addEventListener('click', handleFavoritesResetBtn);
