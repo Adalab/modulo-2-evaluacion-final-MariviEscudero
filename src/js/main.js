@@ -66,10 +66,17 @@ function handleListenedContainers(ev) {
     selectedShowContent.classList.remove('selected');
     selectedShowTitle.classList.remove('text_color');
   }
+  saveSelectedShowsLocalStorage();
   paintFavorites();
   saveFavoritesInLocalStorage();
 }
 
+//funcion para almacenar series seleccionadas en localstorage
+
+function saveSelectedShowsLocalStorage() {
+  const transformFavoritesArray = JSON.stringify(favoriteShows);
+  localStorage.setItem('favoriteSelectedShows', transformFavoritesArray);
+}
 
 //funcion para almacenar favoritos en localstorage
 
@@ -125,6 +132,21 @@ function handleSearchShow(event) {
 }
 searchBtn.addEventListener('click', handleSearchShow);
 
+//pintar seleccion de series favoritas
+
+
+//sacar datos de series seleccionadas de localStorage
+
+function getFavoritesSelectedShowsFromLocalSt() {
+  const localStSelectedShows = localStorage.getItem('favoriteSelectedShows');
+  if (localStSelectedShows !== null) {
+    const favoritesArray = JSON.parse(localStSelectedShows);
+    favoriteShows = favoritesArray;
+    paintFavorites();
+  }
+}
+getFavoritesSelectedShowsFromLocalSt();
+
 //sacar datos de favoritos de localStorage
 
 function getFavoritesFromLocalStorage() {
@@ -160,5 +182,3 @@ function handleFavoritesResetBtn(){
   paintFavorites();
 }
 favoritesResetBtn.addEventListener('click', handleFavoritesResetBtn);
-
-
