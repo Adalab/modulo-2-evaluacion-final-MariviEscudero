@@ -16,8 +16,6 @@ let favoriteShowsImages = [];
 let favoriteShowsTitles = [];
 let favoritesShowsId = [];
 let favoriteSelectedShows = [];
-let favoriteItem = [];
-
 
 //funcion para pintar favoritos
 
@@ -109,21 +107,10 @@ function paintShows() {
     }
     showsTitles = showItem.show.name;
     showsId = showItem.show.id;
-    favoriteItem = favoriteSelectedShows.favoriteSelectedShow.show.id;
-    const includeItem = showsId.includes(favoriteItem);
-    if(includeItem){
-      html += `<li class="show_container js_showcontainer selected"  id="${showsId}">`;
-    }else{
-      html += `<li class="show_container js_showcontainer"  id="${showsId}">`;
-    }
-    // html += `<li class="show_container js_showcontainer"  id="${showsId}">`;
+    html += `<li class="show_container js_showcontainer"  id="${showsId}">`;
     html += `<img class="image js_showimage" src="${showsImages}" alt="${showsTitles}"/>`;
-    if(favoriteSelectedShows.includes(showItem)){
-      html += `<h4 class="showtitle js_showtitle text_color">${showsTitles}</h4>`;
-    }else{
-      html += `<h4 class="showtitle js_showtitle">${showsTitles}</h4>`;
-    }
-    //html += `<h4 class="showtitle js_showtitle">${showsTitles}</h4>`;
+
+    html += `<h4 class="showtitle js_showtitle">${showsTitles}</h4>`;
     html += '</li>';
   }
   showsPainted.innerHTML = html;
