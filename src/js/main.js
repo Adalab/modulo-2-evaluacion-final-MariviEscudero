@@ -185,6 +185,12 @@ function handleDelFavBtn(ev){
       selectedShow.classList.remove('selected');
     }
   }
+  const selectedTitles = document.querySelectorAll('.text_color');
+  for(const selectedTitle of selectedTitles){
+    if(selectedTitle){
+      selectedTitle.classList.remove('text_color');
+    }
+  }
   saveFavoritesInLocalStorage();
   saveSelectedShowsLocalStorage();
   paintFavorites();
