@@ -171,14 +171,8 @@ getFavoritesFromLocalStorage();
 
 
 //borrar favoritos
-
-function handleDelFavBtn(ev){
-  const favoriteClicked = ev.currentTarget.parentElement.id;
-  const contentClickedIndex = favoriteShows.findIndex((favItem) => {
-    return favItem.show.id === parseInt(favoriteClicked);
-  });
-  favoriteShows.splice(contentClickedIndex, 1);
-  favoriteSelectedShows.splice(contentClickedIndex, 1);
+//se quitan los colores de seleccion de la serie
+function removeClassSelected(){
   const selectedShows = document.querySelectorAll('.selected');
   for(const selectedShow of selectedShows){
     if(selectedShow){
@@ -191,6 +185,15 @@ function handleDelFavBtn(ev){
       selectedTitle.classList.remove('text_color');
     }
   }
+}
+function handleDelFavBtn(ev){
+  const favoriteClicked = ev.currentTarget.parentElement.id;
+  const contentClickedIndex = favoriteShows.findIndex((favItem) => {
+    return favItem.show.id === parseInt(favoriteClicked);
+  });
+  favoriteShows.splice(contentClickedIndex, 1);
+  favoriteSelectedShows.splice(contentClickedIndex, 1);
+  removeClassSelected();
   saveFavoritesInLocalStorage();
   saveSelectedShowsLocalStorage();
   paintFavorites();
@@ -203,6 +206,7 @@ function handleFavoritesResetBtn(){
   favoriteShows.splice(0,arrayLength);
   localStorage.removeItem('favoriteShows');
   localStorage.removeItem('favoriteSelectedShows');
+  removeClassSelected();
   paintFavorites();
 }
 favoritesResetBtn.addEventListener('click', handleFavoritesResetBtn);
