@@ -4,12 +4,12 @@ const searchBtn = document.querySelector('.js_searchbtn');
 const searchText = document.querySelector('.js_searchtext');
 const favoriteShowsPainted = document.querySelector('.js_favoriteshowscontainer');
 const favoritesResetBtn = document.querySelector('.js_resetfavsbtn');
-
-
+const btnInt = document.querySelector('.js_buttonint');
 let showsList = [];
 let showsImages = [];
 let showsTitles = [];
 let showsId = [];
+let showsTime = [];
 let listenedItem = [];
 let favoriteShows = [];
 let favoriteShowsImages = [];
@@ -18,7 +18,13 @@ let favoritesShowsId = [];
 let favoriteSelectedShows = [];
 
 //funcion para pintar favoritos
-
+function handlePaintNames(ev){
+  ev.preventDefault();
+  for(const favoriteShow of favoriteShows ){
+    console.log(favoriteShow.show.name);
+  }
+}
+btnInt.addEventListener('click', handlePaintNames);
 function paintFavorites() {
   let html = '';
   for (const favShow of favoriteShows) {
@@ -107,10 +113,13 @@ function paintShows() {
     }
     showsTitles = showItem.show.name;
     showsId = showItem.show.id;
+    showsTime = showItem.show.schedule.time;
+
     html += `<li class="show_container js_showcontainer"  id="${showsId}">`;
     html += `<img class="image js_showimage" src="${showsImages}" alt="${showsTitles}"/>`;
 
     html += `<h4 class="showtitle js_showtitle">${showsTitles}</h4>`;
+    html += `<p class="showtitle">${showsTime}</p>`;
     html += '</li>';
   }
   showsPainted.innerHTML = html;
