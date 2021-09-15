@@ -7,33 +7,24 @@ const favoritesResetBtn = document.querySelector('.js_resetfavsbtn');
 
 
 let showsList = [];
-let showsImages = [];
-let showsTitles = [];
-let showsId = [];
 let listenedItem = [];
 let favoriteShows = [];
-let favoriteShowsImages = [];
-let favoriteShowsTitles = [];
-let favoritesShowsId = [];
 let favoriteSelectedShows = [];
 
 //funcion para pintar favoritos
 
 function paintFavorites() {
   let html = '';
+  let favImage = '';
   for (const favShow of favoriteShows) {
-    favoriteShowsImages = favShow.show.image;
-    if (favoriteShowsImages === null) {
-      favoriteShowsImages =
-        'https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
+    if (favShow.show.image === null) {
+      favImage = 'https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
     } else {
-      favoriteShowsImages = favShow.show.image.medium;
+      favImage = favShow.show.image.medium;
     }
-    favoriteShowsTitles = favShow.show.name;
-    favoritesShowsId = favShow.show.id;
-    html += `<li class="favorite_container"   id="${favoritesShowsId}">`;
-    html += `<img class="favorite_image" src="${favoriteShowsImages}" alt="${favoriteShowsTitles}"/>`;
-    html += `<h2 class="favorite_title">${favoriteShowsTitles}</h2>`;
+    html += `<li class="favorite_container"   id="${favShow.show.id}">`;
+    html += `<img class="favorite_image" src="${favImage}" alt="${favShow.show.name}"/>`;
+    html += `<h2 class="favorite_title">${favShow.show.name}</h2>`;
     html += '<button class="favorite__delbtn js_favoritedelbtn"><i class="fas fa-times favorite__delbtn--icon"></i></button>';
     html += '</li>';
   }
@@ -94,11 +85,10 @@ function listenShows() {
 }
 
 //funcion para pintar imagenes y titulos
-function favoriteShowsPaint(showsId){
+function favoriteShowsPaint(showItem){
   const favoriteContain = favoriteSelectedShows.find((showFav) =>{
-    return showFav.show.id === showsId;
+    return showFav.show.id === showItem.show.id;
   });
-  console.log(showsId);
   if(favoriteContain === undefined){
     return false;
   }else{
@@ -107,32 +97,28 @@ function favoriteShowsPaint(showsId){
 }
 
 function paintShows() {
-  //debugger;
   let html = '';
+  let image = '';
   for (const showItem of showsList) {
-    const isFavoriteOfLocSt = favoriteShowsPaint(showsId);
-    showsImages = showItem.show.image;
-    if (showsImages === null) {
-      showsImages =
-        'https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
+    const isFavoriteOfLocSt = favoriteShowsPaint(showsList);
+    if (showItem.show.image === null) {
+      image = 'https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
     } else {
-      showsImages = showItem.show.image.medium;
+      image = showItem.show.image.medium;
     }
-    showsTitles = showItem.show.name;
-    showsId = showItem.show.id;
     if(isFavoriteOfLocSt){
-      html += `<li class="show_container js_showcontainer selected"  id="${showsId}">`;
+      html += `<li class="show_container js_showcontainer selected"  id="${showItem.show.id}">`;
     }else{
-      html += `<li class="show_container js_showcontainer"  id="${showsId}">`;
+      html += `<li class="show_container js_showcontainer"  id="${showItem.show.id}">`;
     }
-    // html += `<li class="show_container js_showcontainer"  id="${showsId}">`;
-    html += `<img class="image js_showimage" src="${showsImages}" alt="${showsTitles}"/>`;
+    //html += `<li class="show_container js_showcontainer"  id="${showItem.show.id}">`;
+    html += `<img class="image js_showimage" src="${image}" alt="${showItem.show.name}"/>`;
     if(isFavoriteOfLocSt){
-      html += `<h4 class="showtitle js_showtitle text_color">${showsTitles}</h4>`;
+      html += `<h4 class="showtitle js_showtitle text_color">${showItem.show.name}</h4>`;
     }else{
-      html += `<h4 class="showtitle js_showtitle">${showsTitles}</h4>`;
+      html += `<h4 class="showtitle js_showtitle">${showItem.show.name}</h4>`;
     }
-    //html += `<h4 class="showtitle js_showtitle">${showsTitles}</h4>`;
+    //html += `<h4 class="showtitle js_showtitle">${showItem.show.name}</h4>`;
     html += '</li>';
   }
   showsPainted.innerHTML = html;
