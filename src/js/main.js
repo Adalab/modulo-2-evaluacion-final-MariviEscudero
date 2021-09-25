@@ -7,14 +7,8 @@ const favoritesResetBtn = document.querySelector('.js_resetfavsbtn');
 
 
 let showsList = [];
-let showsImages = [];
-let showsTitles = [];
-let showsId = [];
 let listenedItem = [];
 let favoriteShows = [];
-let favoriteShowsImages = [];
-let favoriteShowsTitles = [];
-let favoritesShowsId = [];
 let favoriteSelectedShows = [];
 
 //funcion para pintar favoritos
@@ -22,18 +16,16 @@ let favoriteSelectedShows = [];
 function paintFavorites() {
   let html = '';
   for (const favShow of favoriteShows) {
-    favoriteShowsImages = favShow.show.image;
+     let favoriteShowsImages = favShow.show.image;
     if (favoriteShowsImages === null) {
       favoriteShowsImages =
         'https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
     } else {
       favoriteShowsImages = favShow.show.image.medium;
     }
-    favoriteShowsTitles = favShow.show.name;
-    favoritesShowsId = favShow.show.id;
-    html += `<li class="favorite_container"   id="${favoritesShowsId}">`;
-    html += `<img class="favorite_image" src="${favoriteShowsImages}" alt="${favoriteShowsTitles}"/>`;
-    html += `<h2 class="favorite_title">${favoriteShowsTitles}</h2>`;
+    html += `<li class="favorite_container"   id="${favShow.show.id}">`;
+    html += `<img class="favorite_image" src="${favoriteShowsImages}" alt="${favShow.show.name}"/>`;
+    html += `<h2 class="favorite_title">${favShow.show.name}</h2>`;
     html += '<button class="favorite__delbtn js_favoritedelbtn"><i class="fas fa-times favorite__delbtn--icon"></i></button>';
     html += '</li>';
   }
@@ -98,19 +90,17 @@ function listenShows() {
 function paintShows() {
   let html = '';
   for (const showItem of showsList) {
-    showsImages = showItem.show.image;
+     let showsImages = showItem.show.image;
     if (showsImages === null) {
       showsImages =
         'https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
     } else {
       showsImages = showItem.show.image.medium;
     }
-    showsTitles = showItem.show.name;
-    showsId = showItem.show.id;
-    html += `<li class="show_container js_showcontainer"  id="${showsId}">`;
-    html += `<img class="image js_showimage" src="${showsImages}" alt="${showsTitles}"/>`;
+    html += `<li class="show_container js_showcontainer"  id="${showItem.show.id}">`;
+    html += `<img class="image js_showimage" src="${showsImages}" alt="${showItem.show.name}"/>`;
 
-    html += `<h4 class="showtitle js_showtitle">${showsTitles}</h4>`;
+    html += `<h4 class="showtitle js_showtitle">${showItem.show.name}</h4>`;
     html += '</li>';
   }
   showsPainted.innerHTML = html;
