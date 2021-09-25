@@ -9,7 +9,6 @@ const favoritesResetBtn = document.querySelector('.js_resetfavsbtn');
 let showsList = [];
 let listenedItem = [];
 let favoriteShows = [];
-let favoriteSelectedShows = [];
 
 //funcion para pintar favoritos
 
@@ -57,16 +56,8 @@ function handleListenedContainers(ev) {
     selectedShowContent.classList.remove('selected');
     selectedShowTitle.classList.remove('text_color');
   }
-  saveSelectedShowsLocalStorage();
   paintFavorites();
   saveFavoritesInLocalStorage();
-}
-
-//funcion para almacenar series seleccionadas en localstorage
-
-function saveSelectedShowsLocalStorage() {
-  const transformFavoritesArray = JSON.stringify(favoriteShows);
-  localStorage.setItem('favoriteSelectedShows', transformFavoritesArray);
 }
 
 //funcion para almacenar favoritos en localstorage
@@ -123,18 +114,6 @@ function handleSearchShow(event) {
 searchBtn.addEventListener('click', handleSearchShow);
 
 
-//sacar datos de series seleccionadas de localStorage
-
-function getFavoritesSelectedShowsFromLocalSt() {
-  const localStSelectedShows = localStorage.getItem('favoriteSelectedShows');
-  if (localStSelectedShows !== null) {
-    const favoritesArray = JSON.parse(localStSelectedShows);
-    favoriteSelectedShows = favoritesArray;
-    paintFavorites();
-  }
-}
-getFavoritesSelectedShowsFromLocalSt();
-
 //sacar datos de favoritos de localStorage
 
 function getFavoritesFromLocalStorage() {
@@ -172,10 +151,8 @@ function handleDelFavBtn(ev){
     return favItem.show.id === parseInt(favoriteClicked);
   });
   favoriteShows.splice(contentClickedIndex, 1);
-  favoriteSelectedShows.splice(contentClickedIndex, 1);
   removeClassSelected();
   saveFavoritesInLocalStorage();
-  saveSelectedShowsLocalStorage();
   paintFavorites();
 }
 
