@@ -2,9 +2,10 @@
 const showsPainted = document.querySelector('.js_showlistcontainer');
 const searchBtn = document.querySelector('.js_searchbtn');
 const searchText = document.querySelector('.js_searchtext');
-const favoriteShowsPainted = document.querySelector('.js_favoriteshowscontainer');
+const favoriteShowsPainted = document.querySelector(
+  '.js_favoriteshowscontainer'
+);
 const favoritesResetBtn = document.querySelector('.js_resetfavsbtn');
-
 
 let showsList = [];
 let listenedItem = [];
@@ -15,22 +16,23 @@ let favoriteShows = [];
 function paintFavorites() {
   let html = '';
   for (const favShow of favoriteShows) {
-     let favoriteShowsImages = favShow.show.image;
+    let favoriteShowsImages = favShow.show.image;
     if (favoriteShowsImages === null) {
       favoriteShowsImages =
         'https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
     } else {
       favoriteShowsImages = favShow.show.image.medium;
     }
-    html += `<li class="favorite_container"   id="${favShow.show.id}">`;
-    html += `<img class="favorite_image" src="${favoriteShowsImages}" alt="${favShow.show.name}"/>`;
-    html += `<h2 class="favorite_title">${favShow.show.name}</h2>`;
-    html += '<button class="favorite__delbtn js_favoritedelbtn"><i class="fas fa-times favorite__delbtn--icon"></i></button>';
+    html += `<li class="main__favorites--showlist"   id="${favShow.show.id}">`;
+    html += `<img class="main__favorites--showlist__image" src="${favoriteShowsImages}" alt="${favShow.show.name}"/>`;
+    html += `<h2 class="main__favorites--showlist__showtitle">${favShow.show.name}</h2>`;
+    html +=
+      '<button class="main__favorites--showlist__delbtn js_favoritedelbtn"><i class="fas fa-times-circle"></i></button>';
     html += '</li>';
   }
   favoriteShowsPainted.innerHTML = html;
   const favoritesDelBtns = document.querySelectorAll('.favorite__delbtn');
-  for(const favoritesDelBtn of favoritesDelBtns){
+  for (const favoritesDelBtn of favoritesDelBtns) {
     favoritesDelBtn.addEventListener('click', handleDelFavBtn);
   }
 }
@@ -81,17 +83,17 @@ function listenShows() {
 function paintShows() {
   let html = '';
   for (const showItem of showsList) {
-     let showsImages = showItem.show.image;
+    let showsImages = showItem.show.image;
     if (showsImages === null) {
       showsImages =
         'https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
     } else {
       showsImages = showItem.show.image.medium;
     }
-    html += `<li class="show_container js_showcontainer"  id="${showItem.show.id}">`;
-    html += `<img class="image js_showimage" src="${showsImages}" alt="${showItem.show.name}"/>`;
+    html += `<li class="main__showlist--item js_showcontainer"  id="${showItem.show.id}">`;
+    html += `<img class="main__showlist--item__image js_showimage" src="${showsImages}" alt="${showItem.show.name}"/>`;
 
-    html += `<h4 class="showtitle js_showtitle">${showItem.show.name}</h4>`;
+    html += `<h4 class="main__showlist--item__showtitle js_showtitle">${showItem.show.name}</h4>`;
     html += '</li>';
   }
   showsPainted.innerHTML = html;
@@ -113,7 +115,6 @@ function handleSearchShow(event) {
 }
 searchBtn.addEventListener('click', handleSearchShow);
 
-
 //sacar datos de favoritos de localStorage
 
 function getFavoritesFromLocalStorage() {
@@ -128,16 +129,17 @@ getFavoritesFromLocalStorage();
 
 //borrar favoritos 1 y 2
 //1 se quitan los colores de seleccion de la serie
-function removeClassSelected(){
+function removeClassSelected() {
   const selectedShows = document.querySelectorAll('.selected');
-  for(const selectedShow of selectedShows){
-    if(selectedShow){
+
+  for (const selectedShow of selectedShows) {
+    if (selectedShow) {
       selectedShow.classList.remove('selected');
     }
   }
   const selectedTitles = document.querySelectorAll('.text_color');
-  for(const selectedTitle of selectedTitles){
-    if(selectedTitle){
+  for (const selectedTitle of selectedTitles) {
+    if (selectedTitle) {
       selectedTitle.classList.remove('text_color');
     }
   }
@@ -145,7 +147,7 @@ function removeClassSelected(){
 
 //2 borrar favoritos
 
-function handleDelFavBtn(ev){
+function handleDelFavBtn(ev) {
   const favoriteClicked = ev.currentTarget.parentElement.id;
   const contentClickedIndex = favoriteShows.findIndex((favItem) => {
     return favItem.show.id === parseInt(favoriteClicked);
@@ -159,9 +161,9 @@ function handleDelFavBtn(ev){
 //boton de reset de favoritos
 //añadida funcion para que se borren clases de seleccion en la serie
 
-function handleFavoritesResetBtn(){
+function handleFavoritesResetBtn() {
   const arrayLength = favoriteShows.length;
-  favoriteShows.splice(0,arrayLength);
+  favoriteShows.splice(0, arrayLength);
   localStorage.removeItem('favoriteShows');
   localStorage.removeItem('favoriteSelectedShows');
   removeClassSelected();

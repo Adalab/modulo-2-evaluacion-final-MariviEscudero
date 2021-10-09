@@ -1,34 +1,54 @@
 .main__showlist {
-  border-left: 2px solid $medturquoise;
-  .main__showlist--title {
+  border-top: 1px solid $medturquoise;
+  @media (min-width: 768px) {
+    border-top: none;
+    border-left: 2px solid $medturquoise;
+  }
+  &--title {
     font-size: 1.5em;
     margin-left: 70px;
     margin-bottom: 17px;
   }
-  .main__showlist--text {
+  &--text {
     font-size: 18px;
   }
 }
-.showlist_container {
+.main__showlist--container {
+  padding: 0;
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
 }
-.show_container {
+.main__showlist--item {
+  max-width: max-content;
   background-color: $mediumgrey;
   list-style-type: none;
   margin: 10px;
-
-  .image {
+  @media (min-width: 768px) {
+    width: 40%;
+  }
+  &__image {
+    width: 85%;
     margin: 20px;
     background-color: $linen;
+    @media (min-width: 768px) {
+      width: 50%;
+    }
   }
-  .showtitle {
+  &__showtitle {
+    font-size: 20px;
+    width: 8em;
+    margin-top: 0px;
+    margin-left: 20px;
+    margin-bottom: 10px;
     background-color: transparent;
-    font-family: 'Glory', sans-serif;
-    margin: 0px 20px;
-    padding-bottom: 10px;
     color: $linen;
   }
   .text_color {

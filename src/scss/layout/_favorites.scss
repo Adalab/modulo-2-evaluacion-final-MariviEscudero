@@ -1,72 +1,76 @@
-.main__format {
-  @media (min-width: 768px){
-    display: grid;
-    grid-template-columns: 360px 1fr;
-  }
-  
-  .main__format--section {
-    margin-right: 20px;
-  }
-  .main__format--flex{
-    display: flex;
-    flex-direction: row;
+.main__favorites--section {
+  margin-right: 20px;
+}
+.main__favorites--flex {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+
+  @media (min-width: 768px) {
     justify-content: space-between;
     align-items: center;
   }
-  .main__format--title {
-    font-size: 16px;
-    text-align: start;
-    margin-left: 10px;
-    @media (min-width: 768px){
-      font-size: 1.5em;
-    }
-
-  }
-  .main__format--resetbtn{
-    height: 23px;
-    width: 100px;
-    font-family: 'Glory', sans-serif;
-    font-weight: bold;
-    font-size: 16px;
-    background-color: $medturquoise;
-    color: $graphiteblack;
-    @media (min-width: 768px){
-      height: 25px;
-      width: 125px;
-      font-size: 16px;
-    }
+}
+.main__favorites--title {
+  font-size: 16px;
+  text-align: start;
+  margin-left: 10px;
+  @media (min-width: 768px) {
+    font-size: 1.5em;
   }
 }
-.favorite_container {
+.main__favorites--resetbtn {
+  height: 23px;
+  width: 100px;
+  font-weight: bold;
+  font-size: 16px;
+  background-color: $medturquoise;
+  color: $graphiteblack;
+  @media (min-width: 768px) {
+    height: 25px;
+    width: 125px;
+    font-size: 16px;
+  }
+}
+
+.main__favorites--showlist {
   list-style-type: none;
   display: flex;
   align-items: flex-end;
   margin-bottom: 10px;
-}
-.favorite_image {
-  background-color: $linen;
-  margin-top: 10px;
-}
-.favorite_title {
-  background-color: transparent;
-  font-family: 'Glory', sans-serif;
-  margin: 0px 20px 0px;
-  padding-bottom: 10px;
-  color: $linen;
-}
-.favorite__delbtn {
-  background-color: $graphiteblack;
-  height: 25px;
-  width: 25px;
-  border-radius: 12px;
-  border: solid 2px $linen;
-  font-size: 17px;
-  margin-bottom: 10px;
+  @media (min-width: 768px) {
+    margin-left: 10px;
+  }
 
-  text-align: center;
-  .favorite__delbtn--icon {
+  &__image {
+    background-color: $linen;
+    margin-top: 10px;
+    width: 30%;
+    @media (min-width: 768px) {
+      width: 50%;
+    }
+  }
+  &__showtitle {
     background-color: transparent;
+    font-family: 'Glory', sans-serif;
+    margin: 0px 10px 0px;
     color: $linen;
-    transform: translate(-1px);
+    font-size: 16px;
+    @media (min-width: 768px) {
+      font-size: 20px;
+      margin: 0px 20px 0px;
+    }
+  }
+  &__delbtn {
+    background-color: $graphiteblack;
+    height: 25px;
+    width: 25px;
+    border: none;
+    text-align: center;
+    font-size: 16px;
+    .favorite__delbtn--icon {
+      color: $linen;
+    }
   }
 }
