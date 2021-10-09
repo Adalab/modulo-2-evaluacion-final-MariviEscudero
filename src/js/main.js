@@ -31,7 +31,7 @@ function paintFavorites() {
     html += '</li>';
   }
   favoriteShowsPainted.innerHTML = html;
-  const favoritesDelBtns = document.querySelectorAll('.favorite__delbtn');
+  const favoritesDelBtns = document.querySelectorAll('.js_favoritedelbtn');
   for (const favoritesDelBtn of favoritesDelBtns) {
     favoritesDelBtn.addEventListener('click', handleDelFavBtn);
   }
