@@ -1,23 +1,41 @@
-EVALUACION FINAL MODULO 2 JAVACRIPT
+<h1 align="center">Welcome to Buscador-series-de-tv 👋</h1>
+<p>
+  <img alt="Version" src="https://img.shields.io/badge/version-3.0.1-blue.svg?cacheSeconds=2592000" />
+  <a href="#" target="_blank">
+    <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
+  </a>
+  <a href="https://twitter.com/MoranMarivi" target="_blank">
+    <img alt="Twitter: MoranMarivi" src="https://img.shields.io/twitter/follow/MoranMarivi.svg?style=social" />
+  </a>
+</p>
 
-    El ejercicio consiste en desarrollar una aplicación web de búsqueda de series de TV, para lo que existen varios hitosÑ
-    1- Realizar la estructura básica en HTML.
+> This project 
 
-    2- Habilitar búsqueda de series mediante input de   texto y listener en buscar, lo que hará que se devuelva petición de datos a API.
+### 🏠 [Homepage](This project consists of the development of a web application to search for TV series, which allows us to un / mark the series as favorites and save them in local storage.)
 
-    3- Por cada resultado de serie obtenido hay que pintarlo en HTML, y pintar placeholder de imagen si ésta no es suministrada por la API.
+## Install
 
-    4- Una vez aparezcan los resultados de búsqueda, realizar interacción para que se puedan seleccionar favoritos y se pinten a la izquierda de la página.
+```sh
+npm install
+```
 
-    5- Almacenamiento de los favoritos en LocalStorage para que al recargar o abrir la página aparezcan por defecto.
+## Usage
 
-    BONUS:
-    
-    - Opción de borrar favoritos mediante click en un botón en cada uno de ellos.
+```sh
+npm start
+```
 
-    - Hacer que el resaltado de la serie favorita no se pierda al recargar la página.
+## Author
 
-    - Opción de borrar todos los favoritos a la vez mediante un botón.
-    
-    - Afinar maquetación.
-    
+👤 **Marivi Escudero**
+
+* Twitter: [@MoranMarivi](https://twitter.com/MoranMarivi)
+* Github: [@MariviEscudero](https://github.com/MariviEscudero)
+* LinkedIn: [@MariviEscudero](https://linkedin.com/in/MariviEscudero)
+
+## Show your support
+
+Give a ⭐️ if this project helped you!
+
+***
+_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
