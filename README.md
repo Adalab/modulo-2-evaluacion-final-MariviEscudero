@@ -11,7 +11,7 @@
 
 > This project 
 
-### 🏠 [Homepage](This project consists of the development of a web application to search for TV series, which allows us to un / mark the series as favorites and save them in local storage.)
+### 🏠 This project consists of the development of a web application to search for TV series, which allows us to un / mark the series as favorites and save them in local storage.
 
 ## Install
 
@@ -33,9 +33,7 @@ npm start
 * Github: [@MariviEscudero](https://github.com/MariviEscudero)
 * LinkedIn: [@MariviEscudero](https://linkedin.com/in/MariviEscudero)
 
-## Show your support
 
-Give a ⭐️ if this project helped you!
 
 ***
 _This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
